@@ -1,0 +1,104 @@
+{
+	"page": 0,
+	"selections": [{
+		"systemBetType": "SYSTEM",
+		"outcomes": [{
+			"away": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			},
+			"tie": {
+				"selected": true
+			},
+			"away": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			},
+			"tie": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			},
+			"tie": {
+				"selected": true
+			},
+			"away": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			},
+			"away": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			}
+		},
+		{
+			"away": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			},
+			"away": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			},
+			"tie": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			},
+			"away": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			},
+			"tie": {
+				"selected": true
+			},
+			"away": {
+				"selected": true
+			}
+		}]
+	}]
+}

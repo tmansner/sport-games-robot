@@ -1,0 +1,82 @@
+[{
+	"type": "NORMAL",
+	"drawId": "51370",
+	"gameName": "SPORT",
+	"selections": [{
+		"systemBetType": "SYSTEM",
+		"outcomes": [{
+			"home": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			},
+			"tie": {
+				"selected": true
+			},
+			"away": {
+				"selected": true
+			}
+		},
+		{
+			"away": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			}
+		},
+		{
+			"away": {
+				"selected": true
+			}
+		},
+		{
+			"home": {
+				"selected": true
+			},
+			"tie": {
+				"selected": true
+			},
+			"away": {
+				"selected": true
+			}
+		},
+		{
+			"away": {
+				"selected": true
+			}
+		},
+		{
+			"tie": {
+				"selected": true
+			}
+		}]
+	}],
+	"stake": 10,
+	"price": 90
+}]

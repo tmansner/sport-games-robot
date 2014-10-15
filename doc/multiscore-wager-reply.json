@@ -1,0 +1,34 @@
+[{
+	"status": "ACCEPTED",
+	"type": "NORMAL",
+	"drawId": "53156",
+	"gameName": "MULTISCORE",
+	"price": 5,
+	"serialNumber": "8989-032157697-40",
+	"selections": [{
+		"systemBetType": "SYSTEM",
+		"isQuickpick": false,
+		"score": {
+			"home": [0],
+			"away": [1]
+		}
+	},
+	{
+		"systemBetType": "SYSTEM",
+		"isQuickpick": false,
+		"score": {
+			"home": [1],
+			"away": [2]
+		}
+	},
+	{
+		"systemBetType": "SYSTEM",
+		"isQuickpick": false,
+		"score": {
+			"home": [2],
+			"away": [3]
+		}
+	}],
+	"transactionTime": 1402475807321,
+	"stake": 5
+}]
