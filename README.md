@@ -4,7 +4,7 @@ Tämän dokumentin tarkoitus on kuvata 'Veikkaus pelirobotti -referenssitoteutuk
 
 Veikkaus ei vastaa asiakkaiden ohjelmista tai referenssirobotin toimivuudesta eikä ohjelmistojen käytöstä mahdollisesti seuraavista välillisistä tai välittömistä taloudellisista menetyksistä tai tappioista. Veikkaus ei  vastaa kolmansien osapuolten tekemien sovellusten toiminnasta. Veikkauksen vastuuvapaus- ja lisenssiyksilöinnit yms. ovat tulossa GitHubin refenrenssikoodiin lähipäivinä.
 
-Veikkaus edellyttää, etteivät kolmannet osapuolet toimi vastoin Veikkauksen tietosuojaperiaatteita tai vastoin Tietosuoja- tai Suoramarkkinaselosteessa yksilöityjä kohtia, ks. [https://www.veikkaus.fi/fi/tietosuojaseloste]. Ohjelmallinen pelaaminen on tarkoitettu yksittäisille pelaajille, ei minkäänlaisen julkisen välityspalvelun tms. pohjaksi. Kolmansilla osapuolilla ei ole mitään oikeutta Veikkauksen asiakkaiden tietoihin tms.
+Veikkaus edellyttää, etteivät kolmannet osapuolet toimi vastoin Veikkauksen tietosuojaperiaatteita tai vastoin Tietosuoja- tai Suoramarkkinaselosteessa yksilöityjä kohtia, ks. https://www.veikkaus.fi/fi/tietosuojaseloste. Ohjelmallinen pelaaminen on tarkoitettu yksittäisille pelaajille, ei minkäänlaisen julkisen välityspalvelun tms. pohjaksi. Kolmansilla osapuolilla ei ole mitään oikeutta Veikkauksen asiakkaiden tietoihin tms.
 
 ## Veikkauksen JSON-rajapinta
 
