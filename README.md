@@ -2,7 +2,9 @@
 
 Tämän dokumentin tarkoitus on kuvata 'Veikkaus pelirobotti -referenssitoteutuksen' toiminta. Kyseisen robotin tarkoituksena on kuvata ja demonstroida, kuinka automaattiset sovellukset (robotit) voivat käyttää Veikkauksen JSON-rajapintaa toiminnassaan.
 
-Veikkaus ei vastaa asiakkaiden ohjelmista tai referenssirobotin toimivuudesta eikä ohjelmistojen käytöstä mahdollisesti seuraavista välillisistä tai välittömistä taloudellisista menetyksistä tai tappioista. Veikkauksen vastuuvapaus- ja lisenssiyksilöinnit yms. ovat tulossa GitHubin refenrenssikoodiin lähipäivinä. Veikkaus edellyttää, etteivät asiakkaat tai kolmannet osapuolet toimi vastoin Veikkauksen tietosuojaperiaatteita tai vastoin Tietosuoja- tai Suoramarkkinaselosteessa yksilöityjä kohtia, ks. https://www.veikkaus.fi/fi/tietosuojaseloste. Ohjelmallinen pelaaminen on tarkoitettu yksittäisille pelaajille, ei minkäänlaisen julkisen välityspalvelun tms. pohjaksi. 
+## Lisenssisopimus Veikkauksen referenssitoteutuksille
+
+[Lisenssisopimus](https://github.com/VeikkausOy/sport-games-robot/wiki/Lisenssisopimus)
 
 ## Veikkauksen JSON-rajapinta
 
