@@ -278,6 +278,23 @@ Mikäli voitto-osuustietoja kysellään yli 100 kombinaation kokoiselle järjest
 
 Vastaus: ks. liite doc/sport-winshare-response.json. Vastauksen 'hasNext' kenttä kertoo onko seuraava sivu olemassa.
 
+Monivedon kerroinlistat ladattavina tiedostoina:
+
+|  |  |
+|-----------|----------|
+| Moniveto 1 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_1.zip) |
+| Moniveto 2 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_2.zip) |
+| Moniveto 3 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_3.zip) |
+| Moniveto 4 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_4.zip) |
+| Moniveto 5 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_5.zip) |
+| Moniveto 6 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_6.zip) |
+| Moniveto 7 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_7.zip) |
+| Moniveto 8 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_8.zip) |
+| Moniveto 9 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_9.zip) |
+| Moniveto 10 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_10.zip) |
+| Moniveto 11 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_11.zip) |
+| Moniveto 12 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_12.zip) |
+
 
 ## Muuta
 
