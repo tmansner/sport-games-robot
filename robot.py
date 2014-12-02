@@ -4,10 +4,10 @@
 	Version history:
 	================
 	
-	------------------------------------
+	-------------------------------------------------
 	30.7.2014	| 0.1	| initial version
-	            |       |
-	------------------------------------
+	02.12.2014  | 0.2   | converted for python 3.x
+	-------------------------------------------------
 	
 	About:
 	==================	
@@ -22,7 +22,7 @@
 	Notes:
 	==================	
 	This script requires 'requests' package from http://docs.python-requests.org/en/latest/ for session management, ensuring that the 
-	site cookies are always properly included in the requests.
+	site cookies are always properly included in the requests. 
 	
 	Using a http-client framework that supports authenticated sessions (i.e. cookies) out of the box is highly recommended.
 	Veikkaus' website may change the cookies (names and content) unnoticed, and the clients (browsers or custom scripts), shall always use the
@@ -129,7 +129,7 @@ def get_sport_winshare ( draw, matches ):
 				elif "away" in outcome:
 					b += "2"
 				board.append(b)
-		print "value=%d,numberOfBets=%d,board=%s" % (winshare["value"], winshare["numberOfBets"],",".join(board))
+		print("value=%d,numberOfBets=%d,board=%s" % (winshare["value"], winshare["numberOfBets"],",".join(board)))
 
 
 """
@@ -221,8 +221,8 @@ def create_multiscore_wager ( draw, stake, matches ):
 			"systemBetType":"SYSTEM",
 			"score":{"home":[], "away":[]}
 		}
-		selection["score"]["home"] = map(int, home.split(","))
-		selection["score"]["away"] = map(int, away.split(","))
+		selection["score"]["home"] = list(map(int, home.split(",")))
+		selection["score"]["away"] = list(map(int, away.split(",")))
 		wager_req["selections"].append(selection)
 	
 	# print(json.dumps(wager_req, indent=4, sort_keys=True))
@@ -240,13 +240,13 @@ def place_wagers ( wager_basket, session ):
 	if r.status_code == 200:
 		for wager in r.json():
 			if wager["status"] == "REJECTED":
-				print (">> REJECTED with error: %s" % (json.dumps(wager["error"])))
+				print(">> REJECTED with error: %s" % (json.dumps(wager["error"])))
 			elif wager["status"] == "ACCEPTED":
-				print (">> ACCEPTED with serial: %s" % (wager["serialNumber"]))
+				print(">> ACCEPTED with serial: %s" % (wager["serialNumber"]))
 				
-		print ("%s - placed %d wagers in %.3f seconds" % (datetime.datetime.now(), len(wager_basket), rt))
+		print("%s - placed %d wagers in %.3f seconds" % (datetime.datetime.now(), len(wager_basket), rt))
 	else:
-		print "Request failed:\n" + r.text
+		print("Request failed:\n" + r.text)
 
 
 """
@@ -280,14 +280,14 @@ def parse_arguments ( arguments ):
 	}
 	for o, a in optlist:
 		if o == '-h':
-			print "-h prints this help"
-			print "-a <action> (PLAY, WINSHARE, LIST_DRAWS)"
-			print "-u <username>"
-			print "-p <password>"
-			print "-g <game> (MULTISCORE, SCORE, SPORT)"
-			print "-d <draw number>"
-			print "-f <input file> containing the wagers"
-			print "-s <stake> (in cents, same stake used for all wagers)"
+			print("-h prints this help")
+			print("-a <action> (PLAY, WINSHARE, LIST_DRAWS)")
+			print("-u <username>")
+			print("-p <password>")
+			print("-g <game> (MULTISCORE, SCORE, SPORT)")
+			print("-d <draw number>")
+			print("-f <input file> containing the wagers")
+			print("-s <stake> (in cents, same stake used for all wagers)")
 			sys.exit(0)
 		elif o == '-a':
 			params["action"] = a
@@ -318,11 +318,11 @@ def list_draws ( params ):
 		try:
 			j = r.json()
 			for draw in j["draws"]:
-				print "game: %s, index: %s, draw: %s, status: %s" % (draw["gameName"],draw["brandName"],draw["id"],draw["status"])
+				print("game: %s, index: %s, draw: %s, status: %s" % (draw["gameName"],draw["brandName"],draw["id"],draw["status"]))
 		except: 
-			print "request failed: " + r.text
+			print("request failed: " + r.text)
 	else:
-		print "request failed: " + r.text
+		print("request failed: " + r.text)
 
 """
 	Places the wagers based on input file.
@@ -357,10 +357,10 @@ def play ( params ):
 		wager_basket = []
 
 	balance, frozen = get_balance( session )
-	print "\n\taccount balance: %.2f\n\treserved funds (unconfirmed): %.2f" % (balance/100.0, frozen/100.0)
+	print("\n\taccount balance: %.2f\n\treserved funds (unconfirmed): %.2f" % (balance/100.0, frozen/100.0))
 
 """
-	Performs winshare request for each set of wagers from inpu file
+	Performs winshare request for each set of wagers from input file
 	
 """
 def winshare ( params ):
