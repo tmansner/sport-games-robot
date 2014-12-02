@@ -95,7 +95,7 @@ wager_template = {
 
 """
 def get_balance ( session ):
-	r = session.get(host + "/api/latest/players/self/account", verify=False, headers=headers)
+	r = session.get(host + "/api/latest/players/self/account", verify=True, headers=headers)
 	j = r.json()
 	return j["balances"]["CASH"]["balance"], j["balances"]["CASH"]["frozenBalance"]
 
@@ -113,7 +113,7 @@ def get_sport_winshare ( draw, matches ):
 		"selections":wager_req["selections"]
 	}
 	
-	r = requests.post(host + "/api/v1/sport-games/draws/SPORT/"+draw+"/winshares", verify=False, data=json.dumps(winshare_req), headers=headers)
+	r = requests.post(host + "/api/v1/sport-games/draws/SPORT/"+draw+"/winshares", verify=True, data=json.dumps(winshare_req), headers=headers)
 	j = r.json()
 	for winshare in j["winShares"]:
 		# each winshare has only one selection that contains the board (outcomes)
@@ -234,7 +234,7 @@ def create_multiscore_wager ( draw, stake, matches ):
 """
 def place_wagers ( wager_basket, session ):
 	rt = time.time()
-	r = session.post(host + "/api/v1/sport-games/wagers", verify=False, data=json.dumps(wager_basket), headers=headers)
+	r = session.post(host + "/api/v1/sport-games/wagers", verify=True, data=json.dumps(wager_basket), headers=headers)
 	rt = time.time() - rt;
 
 	if r.status_code == 200:
@@ -258,7 +258,7 @@ def place_wagers ( wager_basket, session ):
 def login (username, password): 
 	s = requests.Session()
 	login_req = {"type":"STANDARD_LOGIN","login":username,"password":password}
-	r = s.post(host + "/api/v1/sessions", verify=False, data=json.dumps(login_req), headers=headers)
+	r = s.post(host + "/api/v1/sessions", verify=True, data=json.dumps(login_req), headers=headers)
 	if r.status_code == 200:
 		return s
 	else:
@@ -313,7 +313,7 @@ def parse_arguments ( arguments ):
 
 """
 def list_draws ( params ):
-	r = requests.get(host + "/api/v1/sport-games/draws?game-names="+params["game"], verify=False, headers=headers)
+	r = requests.get(host + "/api/v1/sport-games/draws?game-names="+params["game"], verify=True, headers=headers)
 	if r.status_code == 200:
 		try:
 			j = r.json()
