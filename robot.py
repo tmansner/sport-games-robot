@@ -39,7 +39,7 @@
 	robot.py -h
 	
 	How to request winshares for set of Vakio (SPORT) boards:
-	robot.py -a WINSHARE -g SPORT -i sport_input.txt
+	robot.py -a WINSHARE -g SPORT -d 12345 -f sport_input.txt
 	
 	How to list open draws for moniveto (MULTISORE):
 	robot.py -a LIST_DRAWS -g MULTISCORE
@@ -61,7 +61,7 @@ import time
 import datetime
 import getopt
 
-requests.packages.urllib3.disable_warnings()
+# requests.packages.urllib3.disable_warnings()
 
 """ 
 	properties
