@@ -6,6 +6,10 @@ Tämän dokumentin tarkoitus on kuvata 'Veikkaus pelirobotti -referenssitoteutuk
 
 [Lisenssisopimus](https://github.com/VeikkausOy/sport-games-robot/wiki/Lisenssisopimus)
 
+## Usein kysyttyjä kysymyksiä
+
+[UKK](https://github.com/VeikkausOy/sport-games-robot/wiki/UKK)
+
 ## Veikkauksen JSON-rajapinta
 
 Veikkaus tarjoaa [JSON](http://en.wikipedia.org/wiki/JSON)-formaattiin perustuvan [REST](http://en.wikipedia.org/wiki/Representational_state_transfer)-rajapinnan, jonka päälle on mahdollista toteuttaa erillaisia Veikkauksen palveluja käyttäviä ohjelmia. Yksi käyttätapaus on robotit, joiden tarkoitus on pelata suuria määriä yksittäisiä pelitapahtumia Veikkauksen järjestelmään.
