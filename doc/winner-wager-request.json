@@ -1,0 +1,16 @@
+[{
+    "stake": 20,
+    "selections": [{
+        "competitors": {
+            "main": [
+                "29"
+            ]
+        },
+        "systemBetType": "SYSTEM",
+        "rowId": "1"
+    }],
+    "price": 20,
+    "gameName": "WINNER",
+    "drawId": "51498",
+    "type": "NORMAL"
+}]

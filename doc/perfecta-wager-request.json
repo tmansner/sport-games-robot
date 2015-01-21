@@ -1,0 +1,25 @@
+[{
+    "stake": 50,
+    "selections": [{
+        "competitors": {
+            "main": [
+                "10"
+            ]
+        },
+        "systemBetType": "SYSTEM",
+        "rowId": "1"
+    },
+    {
+        "competitors": {
+            "main": [
+                "6"
+            ]
+        },
+        "systemBetType": "SYSTEM",
+        "rowId": "2"
+    }],
+    "price": 50,
+    "gameName": "PERFECTA",
+    "drawId": "51598",
+    "type": "NORMAL"
+}]

@@ -1,0 +1,34 @@
+[{
+    "stake": 20,
+    "selections": [{
+        "competitors": {
+            "main": [
+                "6"
+            ]
+        },
+        "systemBetType": "SYSTEM",
+        "rowId": 1
+    },
+    {
+        "competitors": {
+            "main": [
+                "5"
+            ]
+        },
+        "systemBetType": "SYSTEM",
+        "rowId": 2
+    },
+    {
+        "competitors": {
+            "main": [
+                "5"
+            ]
+        },
+        "systemBetType": "SYSTEM",
+        "rowId": 3
+    }],
+    "price": 20,
+    "gameName": "PICKTHREE",
+    "drawId": "56031",
+    "type": "NORMAL"
+}]

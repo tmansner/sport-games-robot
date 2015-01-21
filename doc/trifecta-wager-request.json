@@ -1,0 +1,34 @@
+[{
+    "stake": 20,
+    "selections": [{
+        "competitors": {
+            "main": [
+                "1"
+            ]
+        },
+        "systemBetType": "SYSTEM",
+        "rowId": "1"
+    },
+    {
+        "competitors": {
+            "main": [
+                "3"
+            ]
+        },
+        "systemBetType": "SYSTEM",
+        "rowId": "2"
+    },
+    {
+        "competitors": {
+            "main": [
+                "4"
+            ]
+        },
+        "systemBetType": "SYSTEM",
+        "rowId": "3"
+    }],
+    "price": 20,
+    "gameName": "TRIFECTA",
+    "drawId": "51972",
+    "type": "NORMAL"
+}]
