@@ -87,7 +87,7 @@ Sisäänkirjautuminen aloittaa asiakkaan session. On tärkeää, että sisäänk
 
 Pyyntö:
 ```
-POST /api/v1/players/self/session
+POST /api/v1/sessions
 ```
 Data:
 ```
