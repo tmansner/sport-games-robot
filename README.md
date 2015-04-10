@@ -49,9 +49,9 @@ Referenssi-toteutuksessa käytetään [Requests](http://docs.python-requests.org
 Mikäli käyttämäsi kirjasto ei tue keksien/session automaattista käsittelyä, tulee sellainen toteuttaa ohjelmaan itse.
 
 
-Esimerkki: Session luominen python-kielellä käyttäen Requests kirjastoa
+Esimerkki: Session luominen python-kielellä käyttäen Requests-kirjastoa
 ```
-# Vaaditut otsikko tietueet
+# Vaaditut otsikkotietueet
 headers = {
 	'Content-type':'application/json',
 	'Accept':'application/json',
@@ -68,7 +68,7 @@ def login (username, password):
 	else:
 		raise Exception("Authentication failed", r.status_code)
 
-# Main funktio.
+# Main-funktio.
 # 1. Kirjautuu sisää.
 # 2. Hakee monivedon tulevat kohteet (kirjautuneena käyttäjänä)
 # 3. Tulostaa vastauksen
@@ -188,7 +188,7 @@ Data:
 * doc/sport-wager-request.json
 
 
-Pelit lähetetään järjestelmään listana, eli useamman pelitapahtuman voi	lähettää kerralla. Tämän on myäs suositeltu tapa jos tarkoituksena on pelata esimerkiksi useita yksittäisiä rivejä.
+Pelit lähetetään järjestelmään listana, eli useamman pelitapahtuman voi	lähettää kerralla. Tämän on myös suositeltu tapa jos tarkoituksena on pelata esimerkiksi useita yksittäisiä rivejä.
 
 
 Yksittäisessä pyynnössä voi lähettää maksimissaa 25 pelitapahtumaa kerralla.
@@ -211,7 +211,7 @@ Vastaus: Vastauksena pelipyyntöön tulee käytännässä lähetetty JSON-data, 
 |price | pelin kokonaishinta |
 | transactionTime | pelitapahtuman ajankohta |
 
-Hylätyille peleille vastauksessa on myäs *error*-elementti, joka kertoo‚ miksi peliä ei hyväksytty. Esimerkki:
+Hylätyille peleille vastauksessa on myös *error*-elementti, joka kertoo‚ miksi peliä ei hyväksytty. Esimerkki:
 ```
 "error":{"code":"DRAW_NOT_PLAYABLE"}
 ```
@@ -319,6 +319,6 @@ Tieto siitä, onko vastaus pakattu vai ei, löytyy vastauksen HTTP otsikkotietue
 
 Mikäli automaattiset ohjelmat tukevat moniajoa/säikeistystä, tulee rinnakkain ajettavien prosessien määrä rajoittaa maksimissaan viiteen. Tämän tulisi taata riittävän tehokas pyyntöjen käsittely, vaikka pelattavia pelejä olisi erittäin paljon. Eikä yksittäinen ohjelma näin ollen käytä kohtuuttomasti resursseja.
 
-Kuten edellä on mainittu, tulee ohjelma hyväksyä kaikki palvelun tarjoamat keksit. Tämä on oleellista myäs hjelman suorituskyvyn kannalta.
+Kuten edellä on mainittu, tulee ohjelma hyväksyä kaikki palvelun tarjoamat keksit. Tämä on oleellista myös ohjelman suorituskyvyn kannalta.
 
-Useamman pelipyynnön yhdistäminen yksittäiseen pyyntöön parantaa pelien hyväksyntää huomattavasti. Huomio kuitenkin että yksittäisessä pyynnössä voi olla kerrallaan maksimissaan 25 pelitapahtumaa.
+Useamman pelipyynnön yhdistäminen yksittäiseen pyyntöön parantaa pelien hyväksyntää huomattavasti. Huomio kuitenkin, että yksittäisessä pyynnössä voi olla kerrallaan maksimissaan 25 pelitapahtumaa.
