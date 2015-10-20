@@ -151,7 +151,7 @@ Pyynnölle voidaan antaa game-names -parametri, jolla voidaan määritellä vain
 
 Vastaus:  doc/sport-draws-reply.json
 
-Arvonnat listatataan *draws* listassa. Yksittäisen arvonnan oleellisimmat tiedot ovat pelikohteen numero *id* kentässä, sekä kohteen kuvaus *rows* listauksessa. Kohteen kuvauksen formaatti riippu pelistä.
+Arvonnat listatataan *draws* listassa. Lista sisältää oletuksena sekä avoimet (status OPEN) että tulevat kohteet (status FUTURE, vain Vakio). Yksittäisen pelikohteen oleellisimmat tiedot ovat sen numero *id* kentässä, sekä kuvaus *rows* listauksessa (vain avoimille pelikohteille). Kohteen kuvauksen formaatti riippuu pelistä.
 
 
 Kohteen kuvauksessa pelikohde on kuvattu vaihtoehtoisesti joko *competitors*, *outcome* tai *score* listauksilla.
