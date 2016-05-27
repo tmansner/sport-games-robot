@@ -207,6 +207,7 @@ Yksittäisessä pelissä oleelliset kentät ovat *drawId* ja *gameName*, sillä 
 
 Pelin merkkitiedot määritellään *selections*-listaukseen, ja merkkitietojen rakenne riippuu pelistä. Esimerkiksi vakiossa merkkitiedot käytetään rakennetta, jossa valitut merkit määritellään *outcomes*-listaukseen, kun taas monivedossa käytetään *score*-elementtejä valittujen tuloksien määrittelyssä.
 
+Pitkävedossa tuetut pelityypit on listattu alla ja esimerkit löytyy doc/ hakemistosta.
 
 |Tyyppi|Kuvaus|
 |------|------|
