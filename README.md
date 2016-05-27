@@ -207,6 +207,22 @@ Yksittäisessä pelissä oleelliset kentät ovat *drawId* ja *gameName*, sillä 
 
 Pelin merkkitiedot määritellään *selections*-listaukseen, ja merkkitietojen rakenne riippuu pelistä. Esimerkiksi vakiossa merkkitiedot käytetään rakennetta, jossa valitut merkit määritellään *outcomes*-listaukseen, kun taas monivedossa käytetään *score*-elementtejä valittujen tuloksien määrittelyssä.
 
+
+|Tyyppi|Kuvaus|
+|------|------|
+|NORMAL|Normaali|
+|FREEFORM|Vapaa|
+|SINGLE|Singlet|
+|DOUBLE|Tuplat|
+|TRIO|Triplat|
+|QUARTET|Neloset|
+|QUINTET|Vitoset|
+|SEXTET|Kutoset|
+|SEPTET|Seiskat|
+|OCTET|Kasit|
+|NONET|Ysit|
+ks. [peliohjeet Veikkauksen sivuilla](https://www.veikkaus.fi/fi/pitkaveto#!/ohjeet/peliohjeet/jarjestelmat).
+
 Vastaus: Vastauksena pelipyyntöön tulee käytännässä lähetetty JSON-data, johon on lisätty seuraavat kentät:
 
 |Kenttä|Arvo|
