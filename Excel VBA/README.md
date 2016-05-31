@@ -54,5 +54,6 @@ Monivedolle pelirivin merkit annetaan niin että ottelut erotellaan välilyönni
 0-1 1-0 0-2
 ```
 
+##### Kuvakaappaus Moniveto spekuloinnista
 
-
+![moniveto esimerkki](i/example_moniveto.png "Kuvakaappaus Moniveto spekuloinnista")
