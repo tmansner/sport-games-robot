@@ -29,7 +29,7 @@ Näillä painikkeilla voi hakea avoimet pelikohteet.
 
 Hakee voitto-osuudet järjestelmälle joka on kirjoitettu *Spekuloi* kenttään. Voitto-osuuksien hakemista varten pitää antaa listan numero antaa *Lista* kenttään. Listan numeron saa hakemalla avoimet pelikohteet. 
 
-Vakiolle järjestelmä syötetään erottelemalla merkit välilyönnillä eroteltuna. Esimerkiksi järjestelmä Kasivakiolle
+Vakiolle järjestelmän merkit syötetään väliviivalla eroteltuna. Esimerkiksi järjestelmä Kasivakiolle
 (Ottelut 1, 3, 4, 5, 6 ja 8 varmoja. Ottelu 2 täysin vaihdeltu. Ottelu 7 osittain vaihdeltu):
 ```
 1-1X2-2-2-2-1-1X-2
