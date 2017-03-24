@@ -34,6 +34,10 @@ Vakiolle järjestelmän merkit syötetään väliviivalla eroteltuna. Esimerkiks
 ```
 1-1X2-2-2-2-1-1X-2
 ```
+Vakiolle voi antaa myös haravan, Spekulointi kentän alla olevista valinnoista pitää valita vastaava haravan takuu ja valintoja vastaava tyyppi. Tarkistuksia ei tehdä joten jos spekulointi ja valinnat eivät vastaa toisiaan, niin voitto-osuushaku ei toimi.
+
+Vakion hajariveille voi tehdä voitto-osuus hakuja, silloin Spekulointi kenttä jätetään tyhjäksi ja hajarivit vain allekkain Rivit kentän kohdalle (johon järjestelmien/haravien hakujen hajarivit tulevat).
+
 
 Monivedolle järjestelmä syötetään niin että ottelut erotellaan välilyönnillä, joukkueet väliviivalla ja maalit pilkuilla. Esimerkki kolmen ottelun monivedolle (Ensimmäiseen otteluun varma. Toiseen otteluun kotijoukkueelle maaleja 0 tai 1, vierasjoukkueelle 1 tai 2. Kolmanteen otteluun kotijoukkueelle 1 maali, ja vierasjoukkueelle 0 tai 1):
 ```
