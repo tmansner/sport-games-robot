@@ -62,7 +62,7 @@ headers = {
 def login (username, password):
 	s = requests.Session()
 	login_req = {"type":"STANDARD_LOGIN","login":username,"password":password}
-	r = s.post("https://www.veikkaus.fi/api/v1/sessions", data=json.dumps(login_req), headers=headers)
+	r = s.post("https://www.veikkaus.fi/api/bff/v1/sessions", data=json.dumps(login_req), headers=headers)
 	if r.status_code == 200:
 		return s
 	else:
@@ -87,7 +87,7 @@ Sisäänkirjautuminen aloittaa asiakkaan session. On tärkeää, että sisäänk
 
 Pyyntö:
 ```
-POST /api/v1/sessions
+POST /api/bff/v1/sessions
 ```
 Data (ilman kumppanitunnusta):
 ```
@@ -101,7 +101,7 @@ Data (kumppanitunnuksen kanssa):
 
 Vastaus:
 ```
-JSON dokumentti, joka sisältää asiakkaan tiedot.
+Tyhjä JSON dokumentti.
 ```
 
 
@@ -113,16 +113,16 @@ $ curl --compressed \
 	-H 'Accept: application/json' \
 	-H 'Content-Type: application/json' \
 	-H 'X-ESA-API-Key: ROBOT' \
-	'https://www.veikkaus.fi/api/v1/sessions'
+	'https://www.veikkaus.fi/api/bff/v1/sessions'
 ```
 
 Esimerkki: Kirjautuminen sisään käyttäen Requests-kirjastoa:
 ```
 s = requests.Session()
 login_req = {"type":"STANDARD_LOGIN","login":"esimerkki","password":"salasana"}
-r = s.post("https://www.veikkaus.fi/api/v1/sessions", data=json.dumps(login_req), headers=headers)
-reply = r.json()
-print "Hello %s %s!" % (reply['firstName'], reply['lastName'])
+r = s.post("https://www.veikkaus.fi/api/bff/v1/sessions", data=json.dumps(login_req), headers=headers)
+if r.status_code == 200:
+	print "Loging successful"
 ```
 
 
@@ -275,7 +275,7 @@ Esimerkki: saldo kysely käyttäen Requests kirjastoa
 ```
 s = requests.Session()
 login_req = {"type":"STANDARD_LOGIN","login":"esimerkki","password":"salasana"}
-r = s.post("https://www.veikkaus.fi/api/v1/sessions", data=json.dumps(login_req), headers=headers)
+r = s.post("https://www.veikkaus.fi/api/bff/v1/sessions", data=json.dumps(login_req), headers=headers)
 if r.status_code == 200:
 	r = s.get("https://www.veikkaus.fi/api/v1/players/self/account", headers=headers)
 	j = r.json()

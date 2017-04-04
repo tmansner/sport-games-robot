@@ -47,6 +47,8 @@
 	How to place moniveto (MULTISCORE) wagers for draw number 12345:
 	robot.py -a PLAY -g MULTISCORE -d 12345 -u myaccount -p p4ssw0rd -f multiscore_input.txt -s 20
 
+	How to get account balance
+	robot.py -a BALANCE -u myaccount -p p4ssw0rd
 
 	It is possible to run multiple instances of this robot. But it is recommended to run maximum of 5 robots at a same time for a single account.
 	This is because debiting the single account becomes the bottleneck for robot-wagering, and multiple instances do no longer provide the benefit in speed.	
@@ -95,7 +97,7 @@ wager_template = {
 
 """
 def get_balance ( session ):
-	r = session.get(host + "/api/latest/players/self/account", verify=True, headers=headers)
+	r = session.get(host + "/api/v1/players/self/account", verify=True, headers=headers)
 	j = r.json()
 	return j["balances"]["CASH"]["balance"], j["balances"]["CASH"]["frozenBalance"]
 
@@ -258,7 +260,7 @@ def place_wagers ( wager_basket, session ):
 def login (username, password): 
 	s = requests.Session()
 	login_req = {"type":"STANDARD_LOGIN","login":username,"password":password}
-	r = s.post(host + "/api/v1/sessions", verify=True, data=json.dumps(login_req), headers=headers)
+	r = s.post(host + "/api/bff/v1/sessions", verify=True, data=json.dumps(login_req), headers=headers)
 	if r.status_code == 200:
 		return s
 	else:
@@ -281,7 +283,7 @@ def parse_arguments ( arguments ):
 	for o, a in optlist:
 		if o == '-h':
 			print("-h prints this help")
-			print("-a <action> (PLAY, WINSHARE, LIST_DRAWS)")
+			print("-a <action> (PLAY, WINSHARE, LIST_DRAWS, BALANCE)")
 			print("-u <username>")
 			print("-p <password>")
 			print("-g <game> (MULTISCORE, SCORE, SPORT)")
@@ -360,8 +362,15 @@ def play ( params ):
 	print("\n\taccount balance: %.2f\n\treserved funds (unconfirmed): %.2f" % (balance/100.0, frozen/100.0))
 
 """
+	Login and get balance. 
+"""
+def balance ( params ):
+	session = login(params["username"], params["password"])
+	balance, frozen = get_balance( session )
+	print("\n\taccount balance: %.2f\n\treserved funds (unconfirmed): %.2f\n" % (balance/100.0, frozen/100.0))
+
+"""
 	Performs winshare request for each set of wagers from input file
-	
 """
 def winshare ( params ):
 	f = open(params["input"],"r")
@@ -387,6 +396,8 @@ def robot( arguments ):
 		play(params)
 	elif params["action"] == "WINSHARE":
 		winshare(params)
+	elif params["action"] == "BALANCE":
+		balance(params)
 
 """
 	MAIN
