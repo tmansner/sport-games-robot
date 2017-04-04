@@ -34,9 +34,11 @@ Vakiolle järjestelmän merkit syötetään väliviivalla eroteltuna. Esimerkiks
 ```
 1-1X2-2-2-2-1-1X-2
 ```
-Vakiolle voi antaa myös haravan, Spekulointi kentän alla olevista valinnoista pitää valita vastaava haravan takuu ja valintoja vastaava tyyppi. Tarkistuksia ei tehdä joten jos spekulointi ja valinnat eivät vastaa toisiaan, niin voitto-osuushaku ei toimi.
+Vakiolle voi antaa myös haravan, Spekulointi kentän alla olevista valinnoista pitää valita vastaava haravan takuu ja valintoja vastaava tyyppi. Tarkistuksia ei tehdä, joten jos spekulointi ja valinnat eivät vastaa toisiaan, niin voitto-osuushaku ei toimi.
 
 Vakion hajariveille voi tehdä voitto-osuus hakuja, silloin Spekulointi kenttä jätetään tyhjäksi ja hajarivit vain allekkain Rivit kentän kohdalle (johon järjestelmien/haravien hakujen hajarivit tulevat).
+
+Minivakiolle voi myös nyt hakea erikseen voitto-osuudet (valinta Minivakio -> "Haetaan voitto-osuudet")  ja haluttaessa pelata hajarivien/järjestelmän/haravan mukana (valinta "Pelaa myös Minivakio").
 
 
 Monivedolle järjestelmä syötetään niin että ottelut erotellaan välilyönnillä, joukkueet väliviivalla ja maalit pilkuilla. Esimerkki kolmen ottelun monivedolle (Ensimmäiseen otteluun varma. Toiseen otteluun kotijoukkueelle maaleja 0 tai 1, vierasjoukkueelle 1 tai 2. Kolmanteen otteluun kotijoukkueelle 1 maali, ja vierasjoukkueelle 0 tai 1):
@@ -51,6 +53,8 @@ Pelaa rivit jotka on listattu *Rivit* kentän viereen. Rivit voi syöttää käs
 ```
 1-2-1-2-1-2-1-2-1-1-1-1
 ```
+Järjestelmän/haravan voi myös pelata yhtenä pelitapahtumana Spekuloi kentästä, jos Pelitapa valinnasta valitsee "Pelaa järjestelmä/harava". Oletus pelitapa on hajarivien pelaaminen.
+
 
 Monivedolle pelirivin merkit annetaan niin että ottelut erotellaan välilyönnillä ja joukkueet väliviivalla.
 
