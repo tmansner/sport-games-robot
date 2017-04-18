@@ -152,7 +152,30 @@ Pyynnölle voidaan antaa game-names -parametri, jolla voidaan määritellä vain
 |TRIFECTA | Supertripla|
 |EBET | Pitkäveto|
 |RAVI | Moniveikkaus|
-
+|VOI | Toto: Voittaja|
+|SIJ | Toto: Sija|
+|VS | Toto: Voittaja+Sija|
+|KAK | Toto: Kaksari|
+|KPR | Toto: Kaksari ristiin|
+|EKS | Toto: Eksakta|
+|EKR | Toto: Eksakta ristiin|
+|SPA | Toto: Sijapari|
+|SPR | Toto: Sijapari ristiin|
+|TRO | Toto: Troikka|
+|TRR | Toto: Troikka ristiin|
+|DUO | Toto: Päivän Duo|
+|T4 | Toto: Toto4|
+|T5 | Toto: Toto5|
+|T54 | Toto: Toto54|
+|T6 | Toto: Toto6|
+|T64 | Toto: Toto64|
+|T65 | Toto: Toto65|
+|T7 | Toto: Toto7|
+|T75 | Toto: Toto75|
+|T76 | Toto: Toto76|
+|T8 | Toto: Toto8|
+|T86 | Toto: Toto86|
+|T87 | Toto: Toto87|
 
 Vastaus:  doc/sport-draws-reply.json
 
