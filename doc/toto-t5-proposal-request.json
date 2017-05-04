@@ -1,0 +1,28 @@
+{ "proposals": [
+    { "gameName": "TOTO",
+      "type": "T5",
+      "composed": false,
+      "selections": [[3, 4], [6], [1, 4, 5], [2], [3]],
+      "reserves": [[1, 12], [7], [10, 11], [], []],
+      "stake": 10,
+      "cost": 60,
+    },
+    { "gameName": "TOTO",
+      "type": "T5",
+      "composed": false,
+      "selections": [[1], [7], [5], [2], [3]],
+      "reserves": [[], [], [], [], []],
+      "stake": 10,
+      "cost": 10,
+    },
+    { "gameName": "TOTO",
+      "type": "T5",
+      "composed": false,
+      "selections": [[3, 4], [6], [1, 4], [2, 7], [3]],
+      "reserves": [[1, 12], [7], [10, 11], [], []],
+      "stake": 10,
+      "cost": 80,
+    }
+  ],
+  "totalCost": 150
+}

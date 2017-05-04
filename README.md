@@ -83,7 +83,7 @@ def main():
 
 ### Kirjautuminen
 
-Sisäänkirjautuminen aloittaa asiakkaan session. On tärkeää, että sisäänkirjautuminen tehdään vain kerran, ja kaikki kirjautumisen vaativat pyynnöt tehdään samalla sessiolla. Mikäli haluat käyttää kumppanitunnusta, tulee tunniste lähettää kirjautumispyynnön `affiliateId` kentässä. 
+Sisäänkirjautuminen aloittaa asiakkaan session. On tärkeää, että sisäänkirjautuminen tehdään vain kerran, ja kaikki kirjautumisen vaativat pyynnöt tehdään samalla sessiolla. Mikäli haluat käyttää kumppanitunnusta, tulee tunniste lähettää kirjautumispyynnön `affiliateId` kentässä.
 
 Pyyntö:
 ```
@@ -320,9 +320,95 @@ Monivedon kerroinlistat ladattavina tiedostoina:
 | Moniveto 11 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_11.zip) |
 | Moniveto 12 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_12.zip) |
 
+
 ## Toto pelit
 
-Toto pelien tuotenimet, joita voi käyttää esimerkiksi pelaatujen pelien haussa.
+Tässä esitetään lyhyesti Toto-pelien kohteiden haku ja pelaaminen.
+
+Rajapinnassa käytettyjä termejä:
+* card - tapahtuma
+* race - lähtö
+* runner - kilpailija
+* pool - pelikohde
+* odds - kertoimet
+
+### Pelikohteiden haku
+
+Seuraavilla kyselyillä saa listauksen ravitapahtumista.
+
+```
+GET /api/toto-info/v1/cards/today            # kuluvan päivän tapahtumat
+GET /api/toto-info/v1/cards/future           # tulevien päivien tapahtumat
+GET /api/toto-info/v1/cards/active           # kuluvan ja tulevien päivien tapahtumat
+GET /api/toto-info/v1/cards/date/2017-04-18  # annetun päivän tapahtumat
+```
+
+Tapahtumalistauksesta löytyy myös tietoja bonus ja jackpot -rahoista. Tapahtuman
+tunnistetta (cardId) käytetään tapahtumaan liittyvien tietojen hakuun.
+
+```
+GET /api/toto-info/v1/card/{cardId}/pools    # tapahtuman kaikki pelikohteet
+GET /api/toto-info/v1/card/{cardId}/races    # tapahtuman lähdöt
+GET /api/toto-info/v1/race/{raceId}/runners  # lähdön osallistujat
+GET /api/toto-info/v1/race/{raceId}/pools    # yhden lähdön pelikohteet
+```
+
+Pelikohteiden kertoimet löytyvät JSON-muodossa kyselyllä
+
+```
+GET /api/toto-info/v1/pool/{poolId}/odds      # pelikohteen kertoimet
+```
+
+T-peleihin pelatut yhdistelmät on saatavilla ainoastaan XML-muodossa. "cards.xml"
+-tiedostossa luetellaan kuluvan päivän kohteet sekä niihin liittyvät kerroin- ja
+yhdistelmätiedostot.
+
+```
+GET /api/toto-info/v1/xml/cards.xml
+GET /api/toto-info/v1/xml/{n_ddmmyyyy_Rn_txx}.xml.zip
+```
+
+### Pelaaminen
+
+Toto-pelien pelaamien etenee neljässä vaiheessa:
+
+1. Peliehdotuksen lähetys
+```
+POST /api/toto-wager/v1/bet/{poolId}
+```
+Data: doc/t5-proposal-request.json    
+Yhdessä peliehdotuksessa voi olla pelejä vain yhteen toto-pelikohteeseen.
+Useamman pelin yhdistäminen yhteen peliehdotukseen nopeuttaa pelien hyväksyntää
+merkittävästi. Pelien maksimimäärää ei ole rajoitettu, mutta palvelin voi
+hylätä erittäin suuria peliehdotuksia tai liian usein toistuvia yrityksiä.
+Peliehdotus näkyy pelitilillä yhtenä peliveloituksena. Jos pelitilin saldo ei
+riitä kaikkien peliehdotuksen sisältämien pelien pelaamiseen, hylätään koko
+peliehdotus kaikkine peleineen.
+
+2. Peliehdotuksen tarkastuksen odottelu
+```
+GET /api/toto-wager/bet/{proposalId}
+```
+ - 200 - peliehdotuksen tarkastus kesken
+ - 201 - peliehdotus tarkastettu ja tallennettu (doc/t5-proposal-response.json)
+
+3. Peliehdotuksen pelaaminen
+```
+PUT /api/toto-wager/bet/{proposalId}
+```
+Vaiheessa 1 tarkastettu peliehdotus on tallennettu palvelimelle ja säilyy siellä
+korkeintaan 10 minuuttia. Jos vaihetta 3 ei aloiteta tässä ajassa, on pelaaminen
+aloitettava uudestaan vaiheesta 1. Useamman peliehdotuksen pelaaminen rinnakkain
+yhdeltä pelitililtä ei nopeuta toto-pelien hyväksyntää.
+
+4. Pelien hyväksymisen odottelu
+```
+GET /api/toto-wager/ticket/{ticketId}
+```
+ - 200 - pelien hyväksyminen kesken, vastauksesta ilmenee kuinka pelaaminen on edennyt
+ - 201 - pelit pelattu
+
+### Toto pelien tuotenimet
 
 | | |
 |----|---------------|
@@ -350,6 +436,7 @@ Toto pelien tuotenimet, joita voi käyttää esimerkiksi pelaatujen pelien hauss
 |T8 | Toto: Toto8|
 |T86 | Toto: Toto86|
 |T87 | Toto: Toto87|
+
 
 ## Muuta
 
