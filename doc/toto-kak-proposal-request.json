@@ -1,0 +1,12 @@
+{
+    "totalCost": 400,
+    "proposals": [
+        { "gameName": "TOTO",
+          "composed": false,
+          "cost": 400,
+          "selections": [[1,2], [3,4]],
+          "stake": 100,
+          "type": "KAK"
+        }
+    ]
+}

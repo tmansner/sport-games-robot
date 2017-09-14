@@ -1,0 +1,12 @@
+{
+    "totalCost": 200,
+    "proposals": [
+        { "gameName": "TOTO",
+          "composed": false,
+          "cost": 200,
+          "selections": [[3], [9,11]],
+          "stake": 100,
+          "type": "DUO"
+        }
+    ]
+}
