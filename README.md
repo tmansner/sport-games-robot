@@ -83,20 +83,15 @@ def main():
 
 ### Kirjautuminen
 
-Sisäänkirjautuminen aloittaa asiakkaan session. On tärkeää, että sisäänkirjautuminen tehdään vain kerran, ja kaikki kirjautumisen vaativat pyynnöt tehdään samalla sessiolla. Mikäli haluat käyttää kumppanitunnusta, tulee tunniste lähettää kirjautumispyynnön `affiliateId` kentässä.
+Sisäänkirjautuminen aloittaa asiakkaan session. On tärkeää, että sisäänkirjautuminen tehdään vain kerran, ja kaikki kirjautumisen vaativat pyynnöt tehdään samalla sessiolla.
 
 Pyyntö:
 ```
 POST /api/bff/v1/sessions
 ```
-Data (ilman kumppanitunnusta):
+Data:
 ```
 {"type":"STANDARD_LOGIN","login":"esimerkki","password":"salasana"}
-```
-
-Data (kumppanitunnuksen kanssa):
-```
-{"type":"STANDARD_LOGIN","login":"esimerkki","password":"salasana","affiliateId":"12345678"}
 ```
 
 Vastaus:
