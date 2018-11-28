@@ -443,15 +443,15 @@ Veikkauksen palvelu pyrkii palauttamaan datan pakattuna aina, kun se on mahdolli
 Esimerkeissä käytetty Requests-kirjasto käsittelee pakatun datan automaattisesti.
 
 
-Tieto siitä, onko vastaus pakattu vai ei, löytyy vastauksen HTTP otsikkotietueista:
+Tieto siitä, onko vastaus pakattu vai ei, löytyy vastauksen HTTP-otsikkotietueista:
 ```
 	Content-Encoding: gzip
 ```
 
 ### Suorituskyky
 
-Mikäli automaattiset ohjelmat tukevat moniajoa/säikeistystä, tulee rinnakkain ajettavien prosessien määrä rajoittaa maksimissaan viiteen. Tämän tulisi taata riittävän tehokas pyyntöjen käsittely, vaikka pelattavia pelejä olisi erittäin paljon. Eikä yksittäinen ohjelma näin ollen käytä kohtuuttomasti resursseja.
+Mikäli automaattiset ohjelmat tukevat moniajoa/säikeistystä, tulee rinnakkain ajettavien prosessien määrä rajoittaa maksimissaan neljään (4). Tämän tulisi taata riittävän tehokas pyyntöjen käsittely, vaikka pelattavia pelejä olisi paljon. Näin yksittäinen ohjelma ei käytä kohtuuttomasti resursseja.
 
-Kuten edellä on mainittu, tulee ohjelma hyväksyä kaikki palvelun tarjoamat keksit. Tämä on oleellista myös ohjelman suorituskyvyn kannalta.
+Kuten edellä on mainittu, tulee ohjelman hyväksyä kaikki palvelun tarjoamat keksit. Tämä on oleellista myös ohjelman suorituskyvyn kannalta.
 
 Useamman pelipyynnön yhdistäminen yksittäiseen pyyntöön parantaa pelien hyväksyntää huomattavasti. Huomio kuitenkin, että yksittäisessä pyynnössä voi olla kerrallaan maksimissaan 25 pelitapahtumaa.
