@@ -12,9 +12,9 @@ Tämän dokumentin tarkoitus on kuvata 'Veikkaus pelirobotti -referenssitoteutuk
 
 ## Veikkauksen JSON-rajapinta
 
-Veikkaus tarjoaa [JSON](http://en.wikipedia.org/wiki/JSON)-formaattiin perustuvan [REST](http://en.wikipedia.org/wiki/Representational_state_transfer)-rajapinnan, jonka päälle on mahdollista toteuttaa erillaisia Veikkauksen palveluja käyttäviä ohjelmia. Yksi käyttätapaus on robotit, joiden tarkoitus on pelata suuria määriä yksittäisiä pelitapahtumia Veikkauksen järjestelmään.
+Veikkaus tarjoaa [JSON](http://en.wikipedia.org/wiki/JSON)-formaattiin perustuvan [REST](http://en.wikipedia.org/wiki/Representational_state_transfer)-rajapinnan, jonka päälle on mahdollista toteuttaa erilaisia Veikkauksen pelipalveluja käyttäviä ohjelmia. Yksi käyttätapaus on robotit, joiden tarkoitus on pelata suuria määriä yksittäisiä pelitapahtumia Veikkauksen järjestelmään.
 
-Alla olevat kappaleet kuvaavat ne osat Veikkauksen JSON-rajapinnasta jotka ovat oleellisia pelaamisen kannalta.
+Alla olevat kappaleet kuvaavat ne osat Veikkauksen JSON-rajapinnasta, jotka ovat oleellisia pelaamisen kannalta.
 
 ## HTTP-otsikkotietueet (Headers)
 
@@ -36,18 +36,12 @@ $ curl --compressed \
 
 ## Keksit (Cookies)
 
-Jotta automaattiset ohjelmat toimisivat moitteettomasti, tulee niiden selaimen
-lailla hyväksyä kaikki Veikkauksen palvelun keksit. Veikkauksen palvelun
-käyttämät keksit saattavat muuttua ilman erillistä ilmoitusta, ja näin onkin
-tärkeää, että ohjelmat toteutetaan niin, että ne hyväksyvät keksit ilman
-erillistä määrittelyä.
+Jotta automaattiset ohjelmat toimisivat moitteettomasti, tulee niiden selaimen lailla hyväksyä kaikki Veikkauksen palvelun keksit. Veikkauksen palvelun käyttämät keksit saattavat muuttua ilman erillistä ilmoitusta, jonka vuoksi on tärkeää toteuttaa ohjelmat niin, että ne hyväksyvät keksit ilman erillistä määrittelyä.
 
 
-Referenssi-toteutuksessa käytetään [Requests](http://docs.python-requests.org/en/latest/)-kirjastoa, joka tarjoaa automaattisen sessiohallinnan. Tämä on erittäin suositeltu tapa, koska näinollen keksien hallinta hoituu automaattisesti.
-
+Referenssi-toteutuksessa käytetään [Requests](http://docs.python-requests.org/en/latest/)-kirjastoa, joka tarjoaa automaattisen sessiohallinnan. Tämä on erittäin suositeltu tapa, koska näin keksien hallinta hoituu automaattisesti.
 
 Mikäli käyttämäsi kirjasto ei tue keksien/session automaattista käsittelyä, tulee sellainen toteuttaa ohjelmaan itse.
-
 
 Esimerkki: Session luominen python-kielellä käyttäen Requests-kirjastoa
 ```
@@ -58,7 +52,7 @@ headers = {
 	'X-ESA-API-Key':'ROBOT'
 }
 
-# Sisäänkirjautuminen Veikkauksen tilille, palauttaa sessio-objektin
+# Sisäänkirjautuminen Veikkauksen tilille palauttaa sessio-objektin
 def login (username, password):
 	s = requests.Session()
 	login_req = {"type":"STANDARD_LOGIN","login":username,"password":password}
@@ -69,8 +63,8 @@ def login (username, password):
 		raise Exception("Authentication failed", r.status_code)
 
 # Main-funktio.
-# 1. Kirjautuu sisää.
-# 2. Hakee monivedon tulevat kohteet (kirjautuneena käyttäjänä)
+# 1. Kirjautuu sisään
+# 2. Hakee Monivedon tulevat kohteet (kirjautuneena käyttäjänä)
 # 3. Tulostaa vastauksen
 def main():
 	s = login('esimerkki','salasana')
@@ -83,7 +77,7 @@ def main():
 
 ### Kirjautuminen
 
-Sisäänkirjautuminen aloittaa asiakkaan session. On tärkeää, että sisäänkirjautuminen tehdään vain kerran, ja kaikki kirjautumisen vaativat pyynnöt tehdään samalla sessiolla.
+Sisäänkirjautuminen aloittaa asiakkaan session. On tärkeää, että sisäänkirjautuminen tehdään vain kerran ja kaikki kirjautumisen vaativat pyynnöt tehdään samalla sessiolla.
 
 Pyyntö:
 ```
@@ -123,8 +117,7 @@ if r.status_code == 200:
 
 ### Pelikohteiden tiedot
 
-Tällä pyynnöllä voidaan hakea pelikohteiden tiedot urheilupelikohteille,
-poislukien live-veto.
+Tällä pyynnöllä voidaan hakea pelikohteiden tiedot urheilupelikohteille, poislukien live-veto.
 
 Pyyntö:
 ```
@@ -170,9 +163,7 @@ $ curl --compressed \
 
 ### Pelaaminen
 
-Pelaamiseen liittyen Veikkaus tarjoaa kaksi eri API kutsua. Ns. check-pyynnöllä
-voidaan tarkistaa merkkitietojen oikeellisuus. Varsinainen pelin jättäminen
-järjestelmään tapahtuu ilman '/check' osuutta URL:ssa.
+Pelaamiseen liittyen Veikkaus tarjoaa kaksi eri API kutsua. Ns. check-pyynnöllä voidaan tarkistaa merkkitietojen oikeellisuus. Varsinainen pelin jättäminen järjestelmään tapahtuu ilman '/check' osuutta URL:ssa.
 
 Tällä pyynnöllä voidaan pelata urheilupelikohteita, poislukien live-veto.
 
@@ -189,19 +180,16 @@ Data:
 
 Pelit lähetetään järjestelmään listana, eli useamman pelitapahtuman voi	lähettää kerralla. Tämän on myös suositeltu tapa jos tarkoituksena on pelata esimerkiksi useita yksittäisiä rivejä.
 
+Yksittäisessä pyynnössä voi lähettää enintään 25 pelitapahtumaa kerralla.
 
-Yksittäisessä pyynnössä voi lähettää maksimissaa 25 pelitapahtumaa kerralla.
+Vaikka pelit lähetetään yhdessä pyynnössä, hyväksyy järjestelmä ne yksitellen. Tämä tarkoittaa, että pelit näkyvät pelitilillä yksittäisinä peliveloituksina ja järjestelmä saattaa hylätä yksittäisen pelin (esimerkiksi rahojen loppuessa pelitililtä) muiden samassa pyynnössä olevien pelien tullessa hyväksytyksi.
 
-
-Vaikka pelit lähetetään yhdessä pyynnössä, hyväksyy järjestelmä ne yksitellen. Tämä tarkoittaa että pelit näkyvät pelitilillä yksittäisinä peliveloituksina, ja järjestelmä saattaa hylätä yksittäisen pelin (esimerkiksi rahojen loppuessa pelitililtä) muiden samassa pyynnössä olevien pelien tullessa hyväksytyksi.
-
-
-Yksittäisessä pelissä oleelliset kentät ovat *drawId* ja *gameName*, sillä nämä määrittelevät mitä pelikohdetta ollaan pelaamassa. *drawId* on pelikohteen numero *id*, ja *gameName* pelin tekninen nimi (esim. SPORT). Pelin panos tulee määritellä 'stake' kenttään, mutta pelin kokonaishinnan(*price*) voi jättää halutessaan määrittelemättä. Mikäli pelin kokonaishinnan kuitenkin määrittelee, tarkistaa järjestelmä että hinta vastaa pelin oikeaa hintaa. Hinnan ollessa väärä, järjestelmä ei hyväksy pelitapahtumaa.
+Yksittäisessä pelissä oleelliset kentät ovat *drawId* ja *gameName*, sillä nämä määrittelevät, mitä pelikohdetta ollaan pelaamassa. *drawId* on pelikohteen numero *id*, ja *gameName* pelin tekninen nimi (esim. SPORT). Pelin panos tulee määritellä 'stake'-kenttään, mutta pelin kokonaishinnan(*price*) voi jättää halutessaan määrittelemättä. Mikäli pelin kokonaishinta kuitenkin on määritelty, järjestelmä tarkistaa, että hinta vastaa pelin oikeaa hintaa. Hinnan ollessa väärä, järjestelmä ei hyväksy pelitapahtumaa.
 
 
-Pelin merkkitiedot määritellään *selections*-listaukseen, ja merkkitietojen rakenne riippuu pelistä. Esimerkiksi vakiossa merkkitiedot käytetään rakennetta, jossa valitut merkit määritellään *outcomes*-listaukseen, kun taas monivedossa käytetään *score*-elementtejä valittujen tuloksien määrittelyssä.
+Pelin merkkitiedot määritellään *selections*-listaukseen ja merkkitietojen rakenne riippuu pelistä. Esimerkiksi Vakiossa merkkitiedoissa käytetään rakennetta, jossa valitut merkit määritellään *outcomes*-listaukseen, kun taas Monivedossa käytetään *score*-elementtejä valittujen tuloksien määrittelyssä.
 
-Pitkävedossa tuetut pelityypit on listattu alla ja esimerkit löytyy doc/ hakemistosta.
+Pitkävedossa tuetut pelityypit on listattu alla ja esimerkit löytyvät doc/ hakemistosta.
 
 |Tyyppi|Kuvaus|
 |------|------|
@@ -236,8 +224,7 @@ Esimerkki: ks. referenssitoteutus, robot.py
 
 ### Saldokysely
 
-Tällä pyynnöllä voidaan pyytää pelitilin saldo ja tieto mahdollisista kate-
-varauksista.
+Tällä pyynnöllä voidaan pyytää pelitilin saldo ja tieto mahdollisista katevarauksista.
 
 Pyyntö:
 ```
@@ -282,8 +269,7 @@ else:
 
 Veikkaus tarjoaa useille peleille voitto-osuustiedot ladattavina tiedostoina. Tämä onkin suositeltava tapa aina vain kun tiedostojen käyttäminen on mahdollista.
 
-Alla kuvaus pelatuimmuusprosenttien ja voitto-osuuksien kysymiselle Vakio
-pelille.
+Alla kuvaus pelatuimmuusprosenttien ja voitto-osuuksien kysymiselle Vakio-pelille.
 
 Pyyntö:
 ```
@@ -294,7 +280,7 @@ Pyyntö:
 Data/Parameterit:
 Pyynnöissä {drawId} tulee korvata pelikohteen tunnisteella. ks. liite: doc/sport-winshare-request.json
 
-Mikäli voitto-osuustietoja kysellään yli 100 kombinaation kokoiselle järjestelmälle, tulee pyynnöt pilkkoa useampaan osaan. Käytännössä jokaiseen pyyntöön lähetetään sama kombinaatio, mutta pyynnön *page*-kentällä voidaan määritellä monettako "sivua" ollaan pyytämässä.
+Mikäli voitto-osuustietoja kysellään yli 100 kombinaation kokoiselle järjestelmälle, tulee pyynnöt pilkkoa useampaan osaan. Käytännössä jokaiseen pyyntöön lähetetään sama kombinaatio, mutta pyynnön *page*-kentällä voidaan määritellä, monettako "sivua" ollaan pyytämässä.
 
 Vastaus: ks. liite doc/sport-winshare-response.json. Vastauksen 'hasNext' kenttä kertoo onko seuraava sivu olemassa.
 
@@ -316,7 +302,7 @@ Monivedon kerroinlistat ladattavina tiedostoina:
 | Moniveto 12 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_12.zip) |
 
 
-## Toto pelit
+## Toto-pelit
 
 Tässä esitetään lyhyesti Toto-pelien kohteiden haku ja pelaaminen.
 
@@ -338,8 +324,7 @@ GET /api/toto-info/v1/cards/active           # kuluvan ja tulevien päivien tapa
 GET /api/toto-info/v1/cards/date/2017-04-18  # annetun päivän tapahtumat
 ```
 
-Tapahtumalistauksesta löytyy myös tietoja bonus ja jackpot -rahoista. Tapahtuman
-tunnistetta (cardId) käytetään tapahtumaan liittyvien tietojen hakuun.
+Tapahtumalistauksesta löytyy myös tietoja bonus ja jackpot -rahoista. Tapahtuman tunnistetta (cardId) käytetään tapahtumaan liittyvien tietojen hakuun.
 
 ```
 GET /api/toto-info/v1/card/{cardId}/pools    # tapahtuman kaikki pelikohteet
@@ -354,9 +339,7 @@ Pelikohteiden kertoimet löytyvät JSON-muodossa kyselyllä
 GET /api/toto-info/v1/pool/{poolId}/odds      # pelikohteen kertoimet
 ```
 
-T-peleihin pelatut yhdistelmät on saatavilla ainoastaan XML-muodossa. "cards.xml"
--tiedostossa luetellaan kuluvan päivän kohteet sekä niihin liittyvät kerroin- ja
-yhdistelmätiedostot.
+T-peleihin pelatut yhdistelmät on saatavilla ainoastaan XML-muodossa. "cards.xml"-tiedostossa luetellaan kuluvan päivän kohteet sekä niihin liittyvät kerroin- ja yhdistelmätiedostot.
 
 ```
 GET /api/toto-info/v1/xml/cards.xml
@@ -372,13 +355,7 @@ Toto-pelien pelaamien etenee neljässä vaiheessa:
 POST /api/toto-wager/v1/bet/{poolId}
 ```
 Data: doc/t5-proposal-request.json    
-Yhdessä peliehdotuksessa voi olla pelejä vain yhteen toto-pelikohteeseen.
-Useamman pelin yhdistäminen yhteen peliehdotukseen nopeuttaa pelien hyväksyntää
-merkittävästi. Pelien maksimimäärää ei ole rajoitettu, mutta palvelin voi
-hylätä erittäin suuria peliehdotuksia tai liian usein toistuvia yrityksiä.
-Peliehdotus näkyy pelitilillä yhtenä peliveloituksena. Jos pelitilin saldo ei
-riitä kaikkien peliehdotuksen sisältämien pelien pelaamiseen, hylätään koko
-peliehdotus kaikkine peleineen.
+Yhdessä peliehdotuksessa voi olla pelejä vain yhteen toto-pelikohteeseen. Useamman pelin yhdistäminen yhteen peliehdotukseen nopeuttaa pelien hyväksyntää merkittävästi. Pelien maksimimäärää ei ole rajoitettu, mutta palvelin voi hylätä erittäin suuria peliehdotuksia tai liian usein toistuvia yrityksiä. Peliehdotus näkyy pelitilillä yhtenä peliveloituksena. Jos pelitilin saldo ei riitä kaikkien peliehdotuksen sisältämien pelien pelaamiseen, hylätään koko peliehdotus kaikkine peleineen.
 
 2. Peliehdotuksen tarkastuksen odottelu
 ```
@@ -391,16 +368,13 @@ GET /api/toto-wager/bet/{proposalId}
 ```
 PUT /api/toto-wager/bet/{proposalId}
 ```
-Vaiheessa 1 tarkastettu peliehdotus on tallennettu palvelimelle ja säilyy siellä
-korkeintaan 10 minuuttia. Jos vaihetta 3 ei aloiteta tässä ajassa, on pelaaminen
-aloitettava uudestaan vaiheesta 1. Useamman peliehdotuksen pelaaminen rinnakkain
-yhdeltä pelitililtä ei nopeuta toto-pelien hyväksyntää.
+Vaiheessa 1 tarkastettu peliehdotus on tallennettu palvelimelle ja säilyy siellä korkeintaan 10 minuuttia. Jos vaihetta 3 ei aloiteta tässä ajassa, on pelaaminen aloitettava uudestaan vaiheesta 1. Useamman peliehdotuksen pelaaminen rinnakkain yhdeltä pelitililtä EI nopeuta toto-pelien hyväksyntää.
 
 4. Pelien hyväksymisen odottelu
 ```
 GET /api/toto-wager/ticket/{ticketId}
 ```
- - 200 - pelien hyväksyminen kesken, vastauksesta ilmenee kuinka pelaaminen on edennyt
+ - 200 - pelien hyväksyminen kesken, vastauksesta ilmenee, kuinka pelaaminen on edennyt
  - 201 - pelit pelattu
 
 ### Toto pelien tuotenimet
@@ -450,8 +424,13 @@ Tieto siitä, onko vastaus pakattu vai ei, löytyy vastauksen HTTP-otsikkotietue
 
 ### Suorituskyky
 
-Mikäli automaattiset ohjelmat tukevat moniajoa/säikeistystä, tulee rinnakkain ajettavien prosessien määrä rajoittaa maksimissaan neljään (4). Tämän tulisi taata riittävän tehokas pyyntöjen käsittely, vaikka pelattavia pelejä olisi paljon. Näin yksittäinen ohjelma ei käytä kohtuuttomasti resursseja.
+Mikäli asiakkaiden automaattiset ohjelmat tukevat moniajoa/säikeistystä, tulee rinnakkain ajettavien prosessien määrä rajoittaa maksimissaan neljään (4). Tämän tulisi taata riittävän tehokas pyyntöjen käsittely, vaikka pelattavia pelejä olisi paljon. Näin yksittäinen ohjelma ei käytä kohtuuttomasti resursseja.
 
 Kuten edellä on mainittu, tulee ohjelman hyväksyä kaikki palvelun tarjoamat keksit. Tämä on oleellista myös ohjelman suorituskyvyn kannalta.
 
 Useamman pelipyynnön yhdistäminen yksittäiseen pyyntöön parantaa pelien hyväksyntää huomattavasti. Huomio kuitenkin, että yksittäisessä pyynnössä voi olla kerrallaan maksimissaan 25 pelitapahtumaa.
+
+Pyydämme asiakkaita kiinnittämään huomiota mahdollista rinnakkaisuutta sisältävien ohjelmiensa testaamiseen. 
+Säikeet etenevät omaa tahtiaan ja mahdollisista suorituksista voi muodostua suuri joukko testattavia polkuja. Tällöin testatuksi tulee yleensä vain pieni osajoukko kaikista mahdollisista poluista. Siksi ohjelmiin jää usein virheitä, jotka johtavat ongelmiin vain tietyissä tilanteissa, ja ongelmat raportoidaan vasta, kun ohjelma on jo käytössä.
+Testaamisen lisäksi myös löydettyjen virheiden korjaaminen voi olla vaikeaa. Tähän voi olla syynä esim. se, että rinnakkaiset suoritukset voivat edetä kauas varsinaisesta virheestä ennen kuin ongelmat ovat niin pahoja, että ne huomataan.
+Testaustarkoituksia varten kannattaakin mahdollisuuksien mukaan lisätä apukoodia, joka auttaa virheiden jäljityksessä. Tämäkään ei valitettavasti aina riitä, sillä joskus ongelmat peittyvät, kun virheiden jäljittämistä varten lisätty apukoodi aktivoidaan.
