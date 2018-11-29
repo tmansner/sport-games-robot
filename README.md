@@ -424,11 +424,11 @@ Tieto siitä, onko vastaus pakattu vai ei, löytyy vastauksen HTTP-otsikkotietue
 
 ### Suorituskyky ja asiakkaiden ohjelmien toiminnallisuus sekä testaaminen
 
-Mikäli asiakkaiden automaattiset ohjelmat tukevat moniajoa/säikeistystä, tulee rinnakkain ajettavien prosessien määrä rajoittaa maksimissaan neljään (4). Tämän tulisi taata riittävän tehokas pyyntöjen käsittely, vaikka pelattavia pelejä olisi paljon. Näin yksittäinen ohjelma ei käytä kohtuuttomasti resursseja.
+Mikäli asiakkaiden automaattiset ohjelmat tukevat moniajoa/säikeistystä, tulee rinnakkain ajettavien prosessien määrä rajoittaa enintään neljään (4). Tämän tulisi taata riittävän tehokas pyyntöjen käsittely, vaikka pelattavia pelejä olisi paljon. Näin yksittäinen ohjelma ei käytä kohtuuttomasti resursseja.
 
-Kuten edellä on mainittu, tulee ohjelman hyväksyä kaikki palvelun tarjoamat keksit. Tämä on oleellista myös ohjelman suorituskyvyn kannalta.
+Kuten edellä on mainittu, tulee asiakkaiden ohjelmien hyväksyä kaikki palvelun tarjoamat keksit. Tämä on oleellista myös ohjelman suorituskyvyn kannalta.
 
-Useamman pelipyynnön yhdistäminen yksittäiseen pyyntöön parantaa pelien hyväksyntää huomattavasti. Huomio kuitenkin, että yksittäisessä pyynnössä voi olla kerrallaan maksimissaan 25 pelitapahtumaa.
+Useamman pelipyynnön yhdistäminen yksittäiseen pyyntöön parantaa pelien hyväksyntää huomattavasti. Huomioi kuitenkin, että yksittäisessä pyynnössä voi olla kerrallaan maksimissaan 25 pelitapahtumaa.
 
 Asiakkaiden ohjelmien ei kannata kysellä Veikkauksen järjestelmästä kerroinpäivityksiä alle 15 sekunnin syklillä. Esimerkiksi Pitkävetoon tulee keskimäärin n. 1000 kerroinpäivitystä päivässä, mikä tekee laskennallisesti n. 0,7 päivistystä minuutissa. Huomioitavaa kuitenkin on, ettei todellisuudessa päivityksiä tule näinkään tiuhaan, koska samalla kertaa lähetetään joko useiden otteluiden kerroinpäivitykset tai ainakin saman ottelun kaikkien markkinoiden kertoimet.
 
