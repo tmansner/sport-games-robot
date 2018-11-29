@@ -1,6 +1,6 @@
 # Veikkaus pelirobotti -referenssitoteutus
 
-Tämän dokumentin tarkoitus on kuvata 'Veikkaus pelirobotti -referenssitoteutuksen' toiminta. Kyseisen robotin tarkoituksena on kuvata ja demonstroida, kuinka automaattiset sovellukset (robotit) voivat käyttää Veikkauksen JSON-rajapintaa toiminnassaan.
+Tämän dokumentin tarkoitus on kuvata 'Veikkaus pelirobotti -referenssitoteutuksen' toiminta. Kyseisen robotin tarkoituksena on kuvata ja demonstroida, kuinka asiakkaiden automaattiset sovellukset (robotit) voivat käyttää Veikkauksen JSON-rajapintaa toiminnassaan.
 
 ## Lisenssisopimus Veikkauksen referenssitoteutuksille
 
@@ -36,7 +36,7 @@ $ curl --compressed \
 
 ## Keksit (Cookies)
 
-Jotta automaattiset ohjelmat toimisivat moitteettomasti, tulee niiden selaimen lailla hyväksyä kaikki Veikkauksen palvelun keksit. Veikkauksen palvelun käyttämät keksit saattavat muuttua ilman erillistä ilmoitusta, jonka vuoksi on tärkeää toteuttaa ohjelmat niin, että ne hyväksyvät keksit ilman erillistä määrittelyä.
+Jotta asiakkaiden automaattiset ohjelmat toimisivat moitteettomasti, tulee niiden, selaimen tavoin, hyväksyä kaikki Veikkauksen palvelun keksit. Veikkauksen palvelun käyttämät keksit saattavat muuttua ilman erillistä ilmoitusta, jonka vuoksi on tärkeää toteuttaa ohjelmat niin, että ne hyväksyvät keksit ilman erillistä määrittelyä.
 
 
 Referenssi-toteutuksessa käytetään [Requests](http://docs.python-requests.org/en/latest/)-kirjastoa, joka tarjoaa automaattisen sessiohallinnan. Tämä on erittäin suositeltu tapa, koska näin keksien hallinta hoituu automaattisesti.
@@ -163,7 +163,7 @@ $ curl --compressed \
 
 ### Pelaaminen
 
-Pelaamiseen liittyen Veikkaus tarjoaa kaksi eri API kutsua. Ns. check-pyynnöllä voidaan tarkistaa merkkitietojen oikeellisuus. Varsinainen pelin jättäminen järjestelmään tapahtuu ilman '/check' osuutta URL:ssa.
+Pelaamiseen liittyen Veikkaus tarjoaa kaksi eri API-kutsua. Ns. check-pyynnöllä voidaan tarkistaa merkkitietojen oikeellisuus. Varsinainen pelin jättäminen järjestelmään tapahtuu ilman '/check' osuutta URL:ssa.
 
 Tällä pyynnöllä voidaan pelata urheilupelikohteita, poislukien live-veto.
 
@@ -377,7 +377,7 @@ GET /api/toto-wager/ticket/{ticketId}
  - 200 - pelien hyväksyminen kesken, vastauksesta ilmenee, kuinka pelaaminen on edennyt
  - 201 - pelit pelattu
 
-### Toto pelien tuotenimet
+### Toto-pelien tuotenimet
 
 | | |
 |----|---------------|
@@ -422,7 +422,7 @@ Tieto siitä, onko vastaus pakattu vai ei, löytyy vastauksen HTTP-otsikkotietue
 	Content-Encoding: gzip
 ```
 
-### Suorituskyky
+### Suorituskyky ja asiakkaiden ohjelmien toiminnallisuus sekä testaaminen
 
 Mikäli asiakkaiden automaattiset ohjelmat tukevat moniajoa/säikeistystä, tulee rinnakkain ajettavien prosessien määrä rajoittaa maksimissaan neljään (4). Tämän tulisi taata riittävän tehokas pyyntöjen käsittely, vaikka pelattavia pelejä olisi paljon. Näin yksittäinen ohjelma ei käytä kohtuuttomasti resursseja.
 
@@ -430,7 +430,9 @@ Kuten edellä on mainittu, tulee ohjelman hyväksyä kaikki palvelun tarjoamat k
 
 Useamman pelipyynnön yhdistäminen yksittäiseen pyyntöön parantaa pelien hyväksyntää huomattavasti. Huomio kuitenkin, että yksittäisessä pyynnössä voi olla kerrallaan maksimissaan 25 pelitapahtumaa.
 
-Pyydämme asiakkaita kiinnittämään huomiota mahdollista rinnakkaisuutta sisältävien ohjelmiensa testaamiseen. 
+Asiakkaiden ohjelmien ei kannata kysellä Veikkauksen järjestelmästä kerroinpäivityksiä alle 15 sekunnin syklillä. Esimerkiksi Pitkävetoon tulee keskimäärin n. 1000 kerroinpäivitystä päivässä, mikä tekee laskennallisesti n. 0,7 päivistystä minuutissa. Huomioitavaa kuitenkin on, ettei todellisuudessa päivityksiä tule näinkään tiuhaan, koska samalla kertaa lähetetään joko useiden otteluiden kerroinpäivitykset tai ainakin saman ottelun kaikkien markkinoiden kertoimet.
+
+Asiakkaiden on syytä kiinnittää erityistä huomiota etenkin mahdollista rinnakkaisuutta sisältävien ohjelmiensa testaamiseen. 
 Säikeet etenevät omaa tahtiaan ja mahdollisista suorituksista voi muodostua suuri joukko testattavia polkuja. Tällöin testatuksi tulee yleensä vain pieni osajoukko kaikista mahdollisista poluista. Siksi ohjelmiin jää usein virheitä, jotka johtavat ongelmiin vain tietyissä tilanteissa, ja ongelmat raportoidaan vasta, kun ohjelma on jo käytössä.
 Testaamisen lisäksi myös löydettyjen virheiden korjaaminen voi olla vaikeaa. Tähän voi olla syynä esim. se, että rinnakkaiset suoritukset voivat edetä kauas varsinaisesta virheestä ennen kuin ongelmat ovat niin pahoja, että ne huomataan.
 Testaustarkoituksia varten kannattaakin mahdollisuuksien mukaan lisätä apukoodia, joka auttaa virheiden jäljityksessä. Tämäkään ei valitettavasti aina riitä, sillä joskus ongelmat peittyvät, kun virheiden jäljittämistä varten lisätty apukoodi aktivoidaan.
