@@ -31,7 +31,7 @@ $ curl --compressed \
     -H 'Accept: application/json' \
     -H 'Content-Type: application/json' \
     -H 'X-ESA-API-Key: ROBOT' \
-	'https://www.veikkaus.fi/api/v1/sport-games/draws?game-names=MULTISCORE'
+	'https://www.veikkaus.fi/api/odj/v2/sport-games/draws?game-names=MULTISCORE'
 ```
 
 ## Keksit (Cookies)
@@ -68,7 +68,7 @@ def login (username, password):
 # 3. Tulostaa vastauksen
 def main():
 	s = login('esimerkki','salasana')
-	r = s.get('https://www.veikkaus.fi/api/v1/sport-games/draws?game-names=MULTISCORE', headers=headers)
+	r = s.get('https://www.veikkaus.fi/api/odj/v2/sport-games/draws?game-names=MULTISCORE', headers=headers)
 	print r.text
 ```
 
@@ -158,7 +158,7 @@ $ curl --compressed \
     -H 'Accept: application/json' \
     -H 'Content-Type: application/json' \
     -H 'X-ESA-API-Key: ROBOT' \
-	'https://www.veikkaus.fi/api/v1/sport-games/draws?game-names=MULTISCORE'
+	'https://www.veikkaus.fi/api/odj/v2/sport-games/draws?game-names=MULTISCORE'
 ```
 
 ### Pelaaminen

@@ -6,7 +6,8 @@
 	
 	-------------------------------------------------
 	30.7.2014	| 0.1	| initial version
-	02.12.2014  | 0.2   | converted for python 3.x
+	02.12.2014      | 0.2   | converted for python 3.x
+        16.04.2019      | 0.3   | OpenAPI v2 target urls
 	-------------------------------------------------
 	
 	About:
@@ -315,7 +316,7 @@ def parse_arguments ( arguments ):
 
 """
 def list_draws ( params ):
-	r = requests.get(host + "/api/v1/sport-games/draws?game-names="+params["game"], verify=True, headers=headers)
+	r = requests.get(host + "/api/odj/v2/sport-games/draws?game-names="+params["game"], verify=True, headers=headers)
 	if r.status_code == 200:
 		try:
 			j = r.json()
